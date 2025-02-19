@@ -1,6 +1,9 @@
 import streamlit as st
 import matplotlib.pyplot as plt
 import seaborn as sns
+import pandas as pd
+
+
 
 # Custom style for prettier plots
 sns.set_style("whitegrid")  # Add gridlines with a clean style
@@ -41,13 +44,27 @@ with tab1:
         ax1.plot(x, y)
         st.pyplot(fig1)
 
-        st.subheader("Price of drugs")
-        fig2, ax2 = plt.subplots()
-        prices1 = [10, 20, 30, 35, 40]
-        prices2 = [5, 15, 25, 30, 35]
-        ax2.plot(x, prices1, label="Drug A")
-        ax2.plot(x, prices2, label="Drug B")
+        st.subheader("Drug Price Trends Over the Years")
+        data = pd.read_csv("data/clean/Retail_drug_prices.csv")
+        data["Year"] = data["Year"].astype(int)
+
+        df = data.sort_values(by="Year")
+        drug_options = list(df.columns[1:])  
+        selected_drug = st.selectbox("Select a drug:", drug_options)
+
+        fig2, ax2 = plt.subplots(figsize=(10, 5))
+
+        ax2.plot(df["Year"], df[selected_drug], marker='o', linestyle='-', label=selected_drug)
+        
+        ax2.set_xticks(df["Year"])  
+        ax2.set_xticklabels(df["Year"], rotation=45)
+
+        ax2.set_xlabel("Year")
+        ax2.set_ylabel("Price (€)")
+        ax2.set_title(f"Price Trend of {selected_drug} Over Time")
         ax2.legend()
+        ax2.grid(True)
+
         st.pyplot(fig2)
 
     # Center column with map
