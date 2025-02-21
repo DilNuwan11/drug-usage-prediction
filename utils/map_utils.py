@@ -4,32 +4,7 @@ import folium
 import branca
 from streamlit_folium import folium_static
 
-def map_finnish_regions(finnish_region):
-    # Finnish to English region translation mapping
-    finnish_to_english = {
-        "Uusimaa": "Uusimaa",
-        "Varsinais-Suomi": "Finland Proper",
-        "Satakunta": "Satakunta",
-        "Kanta-Häme": "Tavastia Proper",
-        "Pirkanmaa": "Pirkanmaa",
-        "Päijät-Häme": "Päijät-Häme",
-        "Kymenlaakso": "Kymenlaakso",
-        "Etelä-Karjala": "South Karelia",
-        "Etelä-Savo": "Southern Savonia",
-        "Pohjois-Savo": "Northern Savonia",
-        "Pohjois-Karjala": "North Karelia",
-        "Keski-Suomi": "Central Finland",
-        "Etelä-Pohjanmaa": "Southern Ostrobothnia",
-        "Pohjanmaa": "Ostrobothnia",
-        "Keski-Pohjanmaa": "Central Ostrobothnia",
-        "Pohjois-Pohjanmaa": "Northern Ostrobothnia",
-        "Kainuu": "Kainuu",
-        "Lappi": "Lapland",
-        "Ahvenanmaa": "Åland"
-    }
-
-    english_name = finnish_to_english.get(finnish_region)
-    return english_name
+from utils.helpers import map_finnish_regions
 
 def create_folium_map(year):
     # Load GeoJSON data
@@ -71,8 +46,8 @@ def create_folium_map(year):
     year_data = merged[merged['year'] == year]
 
     # Creating a choropleth map
-    m = folium.Map(location=[64.0, 26.0], zoom_start=5.4) #, width=1000, height=600)
-
+    m = folium.Map(location=[64.0, 26.0], zoom_start=5.4)
+    
     colormap = branca.colormap.LinearColormap(
         vmin=year_data["value"].min(),  # Minimum value in the data
         vmax=year_data["value"].max(),  # Maximum value in the data

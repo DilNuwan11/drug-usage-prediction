@@ -29,6 +29,13 @@ st.set_page_config(
     layout="wide",
     initial_sidebar_state="expanded")
 
+make_map_responsive= """
+ <style>
+ [title~="st.iframe"] { width: 100%}
+ </style>
+"""
+st.markdown(make_map_responsive, unsafe_allow_html=True)
+
 tab1, tab2 = st.tabs(["Monitoring", "Prediction"])
 
 with tab1:
@@ -78,7 +85,7 @@ with tab1:
         df = pd.read_csv("./data/clean/Reported_drug_usage_by_regions.csv")
 
         # Select year
-        year = st.selectbox("Select Year", options=df["year"].unique(), index = 43)
+        year = st.selectbox("Select Year", options=df["year"].unique(), index=43)
 
         # Create and display the map
         m = create_folium_map(year)
@@ -89,7 +96,14 @@ with tab1:
         year = st.selectbox("Select Year", options=["2023", "2024", "2025"])
         category = st.selectbox("Select Category", options=["All", "Category 1", "Category 2"])
 
-        st.metric("Arrests", value = "3xxx", delta = "5%")
+        # # Calculate the increased rate using pct_change
+        # df['KOKO MAA'] = df['KOKO MAA'].astype(float)
+        # df['increase_rate'] = df['KOKO MAA'].pct_change() * 100
+
+        # current_year_value = df[df["year"] == year]['KOKO MAA'].values[0]
+        # increase_rate = df[df["year"] == year]['increase_rate'].values[0]
+
+        # st.metric("Arrests", value=current_year_value, delta=f"{increase_rate:.2f}%")
         st.metric("Some metric", "xxx", "-8%")
 
 with tab2:
