@@ -52,3 +52,15 @@ def map_english_regions(english_region):
     finnish_name = english_to_finnish.get(english_region)
     return finnish_name
 
+def melting_data(df, value_name):
+    df_melted = pd.melt(df_regions, id_vars=['Year'], 
+                    value_vars= ['Uusimaa', 'Southwest Finland', 'Satakunta',
+                                'Kanta-Häme', 'Pirkanmaa', 'Päijät-Häme', 'Kymenlaakso',
+                                'South Karelia', 'South Savo', 'North Savo', 'North Karelia',
+                                'Central Finland', 'South Ostrobothnia', 'Ostrobothnia',
+                                'Central Ostrobothnia', 'North Ostrobothnia', 'Kainuu', 'Lapland',
+                                'Åland'],
+                    var_name='region', value_name=value_name)
+    return df_melted
+
+    
