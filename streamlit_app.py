@@ -60,19 +60,30 @@ with tab1:
         data["Year"] = data["Year"].astype(int)
 
         df = data.sort_values(by="Year")
+        # List all drug columns (excluding 'Year')
         drug_options = list(df.columns[1:])  
-        selected_drug = st.selectbox("Select a drug:", drug_options)
+
+        # Dropdown with two options: plot all drugs or mostly used drugs
+        plot_option = st.selectbox("Select plot option:", ["All types of drugs", "Mostly used drugs"])
 
         fig2, ax2 = plt.subplots(figsize=(10, 5))
 
-        ax2.plot(df["Year"], df[selected_drug], marker='o', linestyle='-', label=selected_drug)
-        
-        ax2.set_xticks(df["Year"])  
-        ax2.set_xticklabels(df["Year"], rotation=45)
+        if plot_option == "All types of drugs":
+            # Plot every drug column available in the data
+            for drug in drug_options:
+                ax2.plot(df["Year"], df[drug], marker='o', linestyle='-', label=drug)
+        elif plot_option == "Mostly used drugs":
+            # Define the mostly used drugs: MDMA, Amphetamines, and both types of Cannabis
+            mostly_used = ["ATS_MDMA (tablet)", "ATS_Amphetamine (gram)", "Cannabis_Resin (gram)", "Cannabis_Herbal (gram)"]
+            for drug in mostly_used:
+                if drug in df.columns:
+                    ax2.plot(df["Year"], df[drug], marker='o', linestyle='-', label=drug)
 
+        ax2.set_xticks(df["Year"])
+        ax2.set_xticklabels(df["Year"], rotation=45)
         ax2.set_xlabel("Year")
         ax2.set_ylabel("Price (€)")
-        ax2.set_title(f"Price Trend of {selected_drug} Over Time")
+        ax2.set_title("Drug Price Trends Over Time")
         ax2.legend()
         ax2.grid(True)
 
