@@ -2,8 +2,12 @@ import streamlit as st
 import matplotlib.pyplot as plt
 import seaborn as sns
 import pandas as pd
+import geopandas as gpd
+import folium
+import branca
 
-
+from utils.map_utils import create_folium_map
+from streamlit_folium import folium_static
 
 # Custom style for prettier plots
 sns.set_style("whitegrid")  # Add gridlines with a clean style
@@ -25,6 +29,13 @@ st.set_page_config(
     layout="wide",
     initial_sidebar_state="expanded")
 
+make_map_responsive= """
+ <style>
+ [title~="st.iframe"] { width: 100%}
+ </style>
+"""
+st.markdown(make_map_responsive, unsafe_allow_html=True)
+
 tab1, tab2 = st.tabs(["Monitoring", "Prediction"])
 
 with tab1:
@@ -33,7 +44,7 @@ with tab1:
     st.title("Monitoring Drug Usage in Finland")
 
     # Creating a grid with three columns for the top section
-    col1, col2, col3 = st.columns([1, 1.5, 1])
+    col1, col2, col3 = st.columns([1.5, 1.5, 1])
 
     # Chart 1: Number of deaths
     with col1:
@@ -70,14 +81,29 @@ with tab1:
     # Center column with map
     with col2:
         st.subheader("Drug-related arrests by regions")
-        st.image("https://upload.wikimedia.org/wikipedia/commons/thumb/0/0e/Regions_of_Finland_labelled_EN.svg/532px-Regions_of_Finland_labelled_EN.svg.png")  # Replace with real map data
+
+        df = pd.read_csv("./data/clean/Reported_drug_usage_by_regions.csv")
+
+        # Select year
+        year = st.selectbox("Select Year", options=df["year"].unique(), index=43)
+
+        # Create and display the map
+        m = create_folium_map(year)
+        folium_static(m, width=800, height=900)
 
     # Metrics
     with col3:
         year = st.selectbox("Select Year", options=["2023", "2024", "2025"])
         category = st.selectbox("Select Category", options=["All", "Category 1", "Category 2"])
 
-        st.metric("Arrests", value = "3xxx", delta = "5%")
+        # # Calculate the increased rate using pct_change
+        # df['KOKO MAA'] = df['KOKO MAA'].astype(float)
+        # df['increase_rate'] = df['KOKO MAA'].pct_change() * 100
+
+        # current_year_value = df[df["year"] == year]['KOKO MAA'].values[0]
+        # increase_rate = df[df["year"] == year]['increase_rate'].values[0]
+
+        # st.metric("Arrests", value=current_year_value, delta=f"{increase_rate:.2f}%")
         st.metric("Some metric", "xxx", "-8%")
 
 with tab2:

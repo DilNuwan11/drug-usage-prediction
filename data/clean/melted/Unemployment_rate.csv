@@ -1,0 +1,305 @@
+,Year,region,unemployment_rate
+0,2009,Uusimaa,6.4
+1,2010,Uusimaa,6.6
+2,2011,Uusimaa,6.1
+3,2012,Uusimaa,6.6
+4,2013,Uusimaa,7.0
+5,2014,Uusimaa,7.5
+6,2015,Uusimaa,8.0
+7,2016,Uusimaa,7.6
+8,2017,Uusimaa,7.9
+9,2018,Uusimaa,7.2
+10,2019,Uusimaa,6.5
+11,2020,Uusimaa,7.3
+12,2021,Uusimaa,7.7
+13,2022,Uusimaa,6.7
+14,2023,Uusimaa,7.6
+15,2024,Uusimaa,8.9
+16,2009,Southwest Finland,7.6
+17,2010,Southwest Finland,8.4
+18,2011,Southwest Finland,8.1
+19,2012,Southwest Finland,7.7
+20,2013,Southwest Finland,9.1
+21,2014,Southwest Finland,9.7
+22,2015,Southwest Finland,10.3
+23,2016,Southwest Finland,9.6
+24,2017,Southwest Finland,8.8
+25,2018,Southwest Finland,7.1
+26,2019,Southwest Finland,6.2
+27,2020,Southwest Finland,7.1
+28,2021,Southwest Finland,6.9
+29,2022,Southwest Finland,8.4
+30,2023,Southwest Finland,6.8
+31,2024,Southwest Finland,8.3
+32,2009,Satakunta,7.7
+33,2010,Satakunta,8.6
+34,2011,Satakunta,6.2
+35,2012,Satakunta,7.2
+36,2013,Satakunta,7.9
+37,2014,Satakunta,7.4
+38,2015,Satakunta,9.1
+39,2016,Satakunta,9.5
+40,2017,Satakunta,8.9
+41,2018,Satakunta,6.4
+42,2019,Satakunta,6.6
+43,2020,Satakunta,7.5
+44,2021,Satakunta,8.1
+45,2022,Satakunta,7.0
+46,2023,Satakunta,7.2
+47,2024,Satakunta,7.6
+48,2009,Kanta-Häme,7.4
+49,2010,Kanta-Häme,9.6
+50,2011,Kanta-Häme,6.7
+51,2012,Kanta-Häme,7.0
+52,2013,Kanta-Häme,6.8
+53,2014,Kanta-Häme,6.9
+54,2015,Kanta-Häme,8.8
+55,2016,Kanta-Häme,6.6
+56,2017,Kanta-Häme,7.4
+57,2018,Kanta-Häme,6.6
+58,2019,Kanta-Häme,4.7
+59,2020,Kanta-Häme,5.8
+60,2021,Kanta-Häme,6.2
+61,2022,Kanta-Häme,6.6
+62,2023,Kanta-Häme,6.9
+63,2024,Kanta-Häme,7.2
+64,2009,Pirkanmaa,10.0
+65,2010,Pirkanmaa,10.0
+66,2011,Pirkanmaa,10.1
+67,2012,Pirkanmaa,9.7
+68,2013,Pirkanmaa,9.8
+69,2014,Pirkanmaa,9.5
+70,2015,Pirkanmaa,10.9
+71,2016,Pirkanmaa,11.0
+72,2017,Pirkanmaa,10.6
+73,2018,Pirkanmaa,8.7
+74,2019,Pirkanmaa,7.5
+75,2020,Pirkanmaa,8.1
+76,2021,Pirkanmaa,8.4
+77,2022,Pirkanmaa,6.6
+78,2023,Pirkanmaa,7.0
+79,2024,Pirkanmaa,9.5
+80,2009,Päijät-Häme,8.8
+81,2010,Päijät-Häme,9.4
+82,2011,Päijät-Häme,9.5
+83,2012,Päijät-Häme,8.3
+84,2013,Päijät-Häme,8.2
+85,2014,Päijät-Häme,10.6
+86,2015,Päijät-Häme,9.3
+87,2016,Päijät-Häme,8.2
+88,2017,Päijät-Häme,7.4
+89,2018,Päijät-Häme,7.6
+90,2019,Päijät-Häme,6.4
+91,2020,Päijät-Häme,8.0
+92,2021,Päijät-Häme,8.6
+93,2022,Päijät-Häme,5.7
+94,2023,Päijät-Häme,8.6
+95,2024,Päijät-Häme,9.7
+96,2009,Kymenlaakso,8.4
+97,2010,Kymenlaakso,11.5
+98,2011,Kymenlaakso,10.8
+99,2012,Kymenlaakso,7.7
+100,2013,Kymenlaakso,9.2
+101,2014,Kymenlaakso,11.6
+102,2015,Kymenlaakso,12.5
+103,2016,Kymenlaakso,12.0
+104,2017,Kymenlaakso,10.5
+105,2018,Kymenlaakso,9.6
+106,2019,Kymenlaakso,8.8
+107,2020,Kymenlaakso,9.2
+108,2021,Kymenlaakso,8.5
+109,2022,Kymenlaakso,7.3
+110,2023,Kymenlaakso,9.1
+111,2024,Kymenlaakso,11.0
+112,2009,South Karelia,10.2
+113,2010,South Karelia,10.6
+114,2011,South Karelia,10.1
+115,2012,South Karelia,6.9
+116,2013,South Karelia,7.8
+117,2014,South Karelia,8.0
+118,2015,South Karelia,9.9
+119,2016,South Karelia,9.2
+120,2017,South Karelia,8.8
+121,2018,South Karelia,8.4
+122,2019,South Karelia,8.2
+123,2020,South Karelia,9.7
+124,2021,South Karelia,8.9
+125,2022,South Karelia,9.0
+126,2023,South Karelia,7.9
+127,2024,South Karelia,10.0
+128,2009,South Savo,9.5
+129,2010,South Savo,7.7
+130,2011,South Savo,7.7
+131,2012,South Savo,9.1
+132,2013,South Savo,11.0
+133,2014,South Savo,9.7
+134,2015,South Savo,9.3
+135,2016,South Savo,9.7
+136,2017,South Savo,11.0
+137,2018,South Savo,8.8
+138,2019,South Savo,7.0
+139,2020,South Savo,7.7
+140,2021,South Savo,6.3
+141,2022,South Savo,8.1
+142,2023,South Savo,6.9
+143,2024,South Savo,7.5
+144,2009,North Savo,11.0
+145,2010,North Savo,10.3
+146,2011,North Savo,10.6
+147,2012,North Savo,8.4
+148,2013,North Savo,8.1
+149,2014,North Savo,8.6
+150,2015,North Savo,9.7
+151,2016,North Savo,9.5
+152,2017,North Savo,8.8
+153,2018,North Savo,8.0
+154,2019,North Savo,6.8
+155,2020,North Savo,7.4
+156,2021,North Savo,7.9
+157,2022,North Savo,6.1
+158,2023,North Savo,7.0
+159,2024,North Savo,6.2
+160,2009,North Karelia,13.3
+161,2010,North Karelia,12.4
+162,2011,North Karelia,12.7
+163,2012,North Karelia,11.8
+164,2013,North Karelia,12.0
+165,2014,North Karelia,10.8
+166,2015,North Karelia,10.9
+167,2016,North Karelia,14.5
+168,2017,North Karelia,12.0
+169,2018,North Karelia,8.9
+170,2019,North Karelia,10.4
+171,2020,North Karelia,13.3
+172,2021,North Karelia,9.7
+173,2022,North Karelia,7.0
+174,2023,North Karelia,7.9
+175,2024,North Karelia,9.6
+176,2009,Central Finland,11.2
+177,2010,Central Finland,9.7
+178,2011,Central Finland,9.5
+179,2012,Central Finland,9.2
+180,2013,Central Finland,10.0
+181,2014,Central Finland,10.4
+182,2015,Central Finland,11.4
+183,2016,Central Finland,10.5
+184,2017,Central Finland,10.6
+185,2018,Central Finland,9.0
+186,2019,Central Finland,7.2
+187,2020,Central Finland,9.6
+188,2021,Central Finland,9.5
+189,2022,Central Finland,7.0
+190,2023,Central Finland,9.2
+191,2024,Central Finland,8.5
+192,2009,South Ostrobothnia,8.1
+193,2010,South Ostrobothnia,8.4
+194,2011,South Ostrobothnia,7.3
+195,2012,South Ostrobothnia,7.2
+196,2013,South Ostrobothnia,7.9
+197,2014,South Ostrobothnia,8.1
+198,2015,South Ostrobothnia,8.9
+199,2016,South Ostrobothnia,7.2
+200,2017,South Ostrobothnia,6.9
+201,2018,South Ostrobothnia,4.5
+202,2019,South Ostrobothnia,4.7
+203,2020,South Ostrobothnia,5.8
+204,2021,South Ostrobothnia,5.8
+205,2022,South Ostrobothnia,5.7
+206,2023,South Ostrobothnia,4.3
+207,2024,South Ostrobothnia,6.1
+208,2009,Ostrobothnia,6.0
+209,2010,Ostrobothnia,6.6
+210,2011,Ostrobothnia,6.5
+211,2012,Ostrobothnia,6.3
+212,2013,Ostrobothnia,5.8
+213,2014,Ostrobothnia,6.1
+214,2015,Ostrobothnia,7.3
+215,2016,Ostrobothnia,5.5
+216,2017,Ostrobothnia,7.0
+217,2018,Ostrobothnia,4.8
+218,2019,Ostrobothnia,4.5
+219,2020,Ostrobothnia,5.7
+220,2021,Ostrobothnia,4.6
+221,2022,Ostrobothnia,3.7
+222,2023,Ostrobothnia,4.3
+223,2024,Ostrobothnia,3.9
+224,2009,Central Ostrobothnia,6.3
+225,2010,Central Ostrobothnia,6.7
+226,2011,Central Ostrobothnia,8.0
+227,2012,Central Ostrobothnia,7.9
+228,2013,Central Ostrobothnia,8.3
+229,2014,Central Ostrobothnia,7.4
+230,2015,Central Ostrobothnia,9.4
+231,2016,Central Ostrobothnia,8.9
+232,2017,Central Ostrobothnia,8.7
+233,2018,Central Ostrobothnia,7.5
+234,2019,Central Ostrobothnia,6.8
+235,2020,Central Ostrobothnia,7.1
+236,2021,Central Ostrobothnia,7.7
+237,2022,Central Ostrobothnia,6.8
+238,2023,Central Ostrobothnia,7.2
+239,2024,Central Ostrobothnia,8.4
+240,2009,North Ostrobothnia,9.9
+241,2010,North Ostrobothnia,10.2
+242,2011,North Ostrobothnia,8.8
+243,2012,North Ostrobothnia,9.5
+244,2013,North Ostrobothnia,9.9
+245,2014,North Ostrobothnia,10.0
+246,2015,North Ostrobothnia,10.1
+247,2016,North Ostrobothnia,9.8
+248,2017,North Ostrobothnia,8.7
+249,2018,North Ostrobothnia,7.0
+250,2019,North Ostrobothnia,7.9
+251,2020,North Ostrobothnia,8.2
+252,2021,North Ostrobothnia,7.4
+253,2022,North Ostrobothnia,6.8
+254,2023,North Ostrobothnia,7.3
+255,2024,North Ostrobothnia,9.3
+256,2009,Kainuu,9.4
+257,2010,Kainuu,9.1
+258,2011,Kainuu,7.6
+259,2012,Kainuu,10.5
+260,2013,Kainuu,11.8
+261,2014,Kainuu,17.5
+262,2015,Kainuu,15.6
+263,2016,Kainuu,10.6
+264,2017,Kainuu,11.7
+265,2018,Kainuu,10.8
+266,2019,Kainuu,7.6
+267,2020,Kainuu,7.2
+268,2021,Kainuu,7.7
+269,2022,Kainuu,6.8
+270,2023,Kainuu,7.2
+271,2024,Kainuu,8.4
+272,2009,Lapland,11.6
+273,2010,Lapland,11.2
+274,2011,Lapland,10.4
+275,2012,Lapland,10.3
+276,2013,Lapland,10.3
+277,2014,Lapland,9.6
+278,2015,Lapland,11.7
+279,2016,Lapland,10.4
+280,2017,Lapland,10.4
+281,2018,Lapland,8.8
+282,2019,Lapland,8.3
+283,2020,Lapland,9.2
+284,2021,Lapland,9.2
+285,2022,Lapland,7.5
+286,2023,Lapland,6.2
+287,2024,Lapland,7.2
+288,2009,Åland,8.3
+289,2010,Åland,8.6
+290,2011,Åland,8.0
+291,2012,Åland,7.9
+292,2013,Åland,8.3
+293,2014,Åland,8.7
+294,2015,Åland,9.4
+295,2016,Åland,8.9
+296,2017,Åland,8.7
+297,2018,Åland,7.5
+298,2019,Åland,6.8
+299,2020,Åland,7.7
+300,2021,Åland,7.7
+301,2022,Åland,6.8
+302,2023,Åland,7.2
+303,2024,Åland,8.4
