@@ -48,32 +48,39 @@ with tab1:
 
     # Chart 1: Number of deaths
     with col1:
-        st.subheader("Number of deaths")
+        st.subheader("Number of deaths by Age Group")
+        df_1 = pd.read_csv("data/clean/Drug_related_deaths.csv")
+        years = [int(col) for col in df_1.columns if col != "Age_group"]
         fig1, ax1 = plt.subplots()
-        x = [2018, 2019, 2020, 2021, 2022]
-        y = [10, 20, 30, 35, 40]
-        ax1.plot(x, y)
+        for index, row in df_1.iterrows():
+            age_group = row["Age_group"]
+            # Convert the row values for the years to integers
+            death_counts = row[1:].values.astype(int)
+            ax1.plot(years, death_counts, marker='o', linestyle='-', label=age_group)
+        ax1.set_xlabel("Year")
+        ax1.set_ylabel("Number of deaths")
+        ax1.set_title("Number of Deaths by Age Group Over the Years")
+        ax1.legend(title="Age Group")
+        ax1.set_xticks(years)
+        ax1.set_xticklabels(years, rotation=45)
+        ax1.grid(True)
         st.pyplot(fig1)
 
-        st.subheader("Drug Price Trends Over the Years")
+        st.subheader("Drug Price Trends")
         data = pd.read_csv("data/clean/Retail_drug_prices.csv")
         data["Year"] = data["Year"].astype(int)
 
         df = data.sort_values(by="Year")
-        # List all drug columns (excluding 'Year')
         drug_options = list(df.columns[1:])  
 
-        # Dropdown with two options: plot all drugs or mostly used drugs
         plot_option = st.selectbox("Select plot option:", ["All types of drugs", "Mostly used drugs"])
 
         fig2, ax2 = plt.subplots(figsize=(10, 5))
 
         if plot_option == "All types of drugs":
-            # Plot every drug column available in the data
             for drug in drug_options:
                 ax2.plot(df["Year"], df[drug], marker='o', linestyle='-', label=drug)
         elif plot_option == "Mostly used drugs":
-            # Define the mostly used drugs: MDMA, Amphetamines, and both types of Cannabis
             mostly_used = ["ATS_MDMA (tablet)", "ATS_Amphetamine (gram)", "Cannabis_Resin (gram)", "Cannabis_Herbal (gram)"]
             for drug in mostly_used:
                 if drug in df.columns:
@@ -127,8 +134,4 @@ with tab2:
     with col6:
         area = st.selectbox("Select Area", options=["All", "Area 1", "Area 2", "Area 3"])
 
-    with col7:
-        st.subheader("Number of deaths")
-        fig3, ax3 = plt.subplots()
-        ax3.plot(x, y)
-        st.pyplot(fig3)
+    
