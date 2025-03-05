@@ -2,9 +2,11 @@ import streamlit as st
 import matplotlib.pyplot as plt
 import seaborn as sns
 import pandas as pd
+import numpy as np
 import geopandas as gpd
 import folium
 import branca
+import base64
 
 from utils.map_utils import create_folium_map
 from streamlit_folium import folium_static
@@ -36,7 +38,7 @@ make_map_responsive= """
 """
 st.markdown(make_map_responsive, unsafe_allow_html=True)
 
-tab1, tab2 = st.tabs(["Monitoring", "Prediction"])
+tab1, tab2, tab3 = st.tabs(["Monitoring", "Prediction", "Impact"])
 
 with tab1:
 
@@ -98,31 +100,63 @@ with tab1:
 
     # Center column with map
     with col2:
+        # # Mode selection
+        # mode = st.radio("Select Mode", options=["View in Time Series", "View in Static"])
+
+        # if mode == "View in Time Series":
+        #     st.subheader("Drug-related arrests by regions")
+
+        #     df = pd.read_csv("./data/clean/Reported_drug_usage_by_regions.csv")
+
+        #     # Select year
+        #     year = st.selectbox("Select Year", options=df["year"].unique(), index=43)
+
+        #     # Create and display the map
+        #     m = create_folium_map(year)
+        #     folium_static(m, width=800, height=900)
+            
+        # elif mode == "View in Static":
         st.subheader("Drug-related arrests by regions")
 
-        df = pd.read_csv("./data/clean/Reported_drug_usage_by_regions.csv")
+        # Load the GIF
+        gif_path = "data/drug_usage_maps_2000_2023.gif"
+        with open(gif_path, 'rb') as file:
+            contents = file.read()
+        data_url = base64.b64encode(contents).decode('utf-8-sig')
+        st.markdown(f'<img src="data:image/gif;base64,{data_url}">', unsafe_allow_html=True)
 
-        # Select year
-        year = st.selectbox("Select Year", options=df["year"].unique(), index=43)
-
-        # Create and display the map
-        m = create_folium_map(year)
-        folium_static(m, width=800, height=900)
 
     # Metrics
     with col3:
-        year = st.selectbox("Select Year", options=["2023", "2024", "2025"])
-        category = st.selectbox("Select Category", options=["All", "Category 1", "Category 2"])
+        # arrests
+        df = pd.read_csv("./data/clean/Reported_drug_usage_by_regions.csv")
+        df_death = pd.read_csv("./data/clean/Drug_related_deaths.csv")
 
-        # # Calculate the increased rate using pct_change
-        # df['KOKO MAA'] = df['KOKO MAA'].astype(float)
-        # df['increase_rate'] = df['KOKO MAA'].pct_change() * 100
+        year_list = list(range(2007, 2024))
+        year = st.selectbox("Select Year", options=year_list, index=16)
 
-        # current_year_value = df[df["year"] == year]['KOKO MAA'].values[0]
-        # increase_rate = df[df["year"] == year]['increase_rate'].values[0]
+        current_year_value = df[df["year"] == year]['KOKO MAA'].values[0]
+        year_before_value = df[df["year"] == year-1]['KOKO MAA'].values[0]
 
-        # st.metric("Arrests", value=current_year_value, delta=f"{increase_rate:.2f}%")
-        st.metric("Some metric", "xxx", "-8%")
+        increase_rate = ((current_year_value - year_before_value) / year_before_value) * 100
+
+        st.metric(f"Drug related **arrests** change (%) in {year}", value=np.round(increase_rate, decimals=2), border=True)
+
+        # deaths
+        df_death.loc['Total'] = df_death.sum(numeric_only=True)
+
+        current_year_value = df_death.loc['Total', str(year)]
+        year_before_value = df_death.loc['Total', str(year-1)]
+
+        increase_rate = ((current_year_value - year_before_value) / year_before_value) * 100
+
+        st.metric(f"Drug related **deaths** change (%) in {year}", value=np.round(increase_rate, decimals=2), border=True)
+
+        # regions
+        max_arrests_region = df[df["year"] == year].drop(columns=["year", "KOKO MAA"]).idxmax(axis=1).values[0]
+        max_arrests_value = df[df["year"] == year][max_arrests_region].values[0]
+
+        st.metric(f"Region with most arrests in {year}", value=max_arrests_region, help=str(max_arrests_value), border=True)
 
 with tab2:
     # Third section: Prediction of drug usage
@@ -134,4 +168,37 @@ with tab2:
     with col6:
         area = st.selectbox("Select Area", options=["All", "Area 1", "Area 2", "Area 3"])
 
-    
+    with col7:
+        st.subheader("Number of deaths")
+        # fig3, ax3 = plt.subplots()
+        # ax3.plot(x, y)
+        # st.pyplot(fig3)
+
+with tab3:
+
+    # review the content
+    st.title("Our Initiative of Monitoring and Prediction of drug usage in Finland")
+
+    st.header("Who is it for?")
+    st.write("""
+    This dashboard is designed for policymakers, healthcare professionals, and researchers who are involved in monitoring and addressing drug usage trends in Finland.\n
+    It provides valuable insights into drug-related deaths, price trends, and regional usage patterns.
+    """)
+
+    st.header("Who benefits from the dashboard?")
+    st.write("""
+    The primary beneficiaries of this dashboard are:
+    - **Policymakers**: To make informed decisions and create effective policies to combat drug usage.
+    - **Healthcare Professionals**: To understand the trends and allocate resources efficiently.
+    - **Researchers**: To analyze data and identify patterns for further studies.
+    - **General Public**: To stay informed about the drug usage trends and their impact on society.
+    """)
+
+    st.header("Recommendations")
+    st.write("""
+    Based on the data presented in this dashboard, the following recommendations can be made:
+    - **Increase Awareness Programs**: Implement educational campaigns to raise awareness about the dangers of drug usage.
+    - **Enhance Support Services**: Provide better support and rehabilitation services for individuals struggling with drug addiction.
+    - **Strengthen Law Enforcement**: Increase efforts to curb the illegal drug trade and reduce drug-related crimes.
+    - **Policy Reforms**: Develop and implement policies that address the root causes of drug usage and provide long-term solutions.
+    """)
