@@ -48,57 +48,49 @@ with tab1:
     st.title("Monitoring Drug Usage in Finland")
 
     # Creating a grid with three columns for the top section
-    col1, col2, col3 = st.columns([1.5, 1.5, 1])
+    col1, col2, col3 = st.columns([1.5, 1.5, 0.5])
 
     # Chart 1: Number of deaths
     with col1:
         st.subheader("Number of deaths by Age Group")
         df_1 = pd.read_csv("data/clean/Drug_related_deaths.csv")
         years = [int(col) for col in df_1.columns if col != "Age_group"]
-        fig1, ax1 = plt.subplots()
+
+        fig1 = go.Figure()
         for index, row in df_1.iterrows():
             age_group = row["Age_group"]
-            # Convert the row values for the years to integers
             death_counts = row[1:].values.astype(int)
-            ax1.plot(years, death_counts, marker='o', linestyle='-', label=age_group)
-        ax1.set_xlabel("Year")
-        ax1.set_ylabel("Number of deaths")
-        ax1.set_title("Number of Deaths by Age Group Over the Years")
-        ax1.legend(title="Age Group")
-        ax1.set_xticks(years)
-        ax1.set_xticklabels(years, rotation=45)
-        ax1.grid(True)
-        st.pyplot(fig1)
+            fig1.add_trace(go.Scatter(x=years, y=death_counts, mode='lines+markers', name=age_group))
+
+        fig1.update_layout(# title="Number of Deaths by Age Group Over the Years",
+                           xaxis_title="Year", yaxis_title="Number of deaths",
+                           template="plotly_white", showlegend=True)
+        st.plotly_chart(fig1, use_container_width=True)
 
         st.subheader("Drug Price Trends")
         data = pd.read_csv("data/clean/Retail_drug_prices.csv")
         data["Year"] = data["Year"].astype(int)
 
         df = data.sort_values(by="Year")
-        drug_options = list(df.columns[1:])  
+        drug_options = list(df.columns[1:])
 
-        plot_option = st.selectbox("Select plot option:", ["All types of drugs", "Mostly used drugs"])
+        plot_option = st.selectbox("Select plot option:", ["All types of drugs", "Commonly used drugs"], index=1)
 
-        fig2, ax2 = plt.subplots(figsize=(10, 5))
+        fig2 = go.Figure()
 
         if plot_option == "All types of drugs":
             for drug in drug_options:
-                ax2.plot(df["Year"], df[drug], marker='o', linestyle='-', label=drug)
-        elif plot_option == "Mostly used drugs":
+                fig2.add_trace(go.Scatter(x=df["Year"], y=df[drug], mode='lines+markers', name=drug))
+        elif plot_option == "Commonly used drugs":
             mostly_used = ["ATS_MDMA (tablet)", "ATS_Amphetamine (gram)", "Cannabis_Resin (gram)", "Cannabis_Herbal (gram)"]
             for drug in mostly_used:
                 if drug in df.columns:
-                    ax2.plot(df["Year"], df[drug], marker='o', linestyle='-', label=drug)
+                    fig2.add_trace(go.Scatter(x=df["Year"], y=df[drug], mode='lines+markers', name=drug))
 
-        ax2.set_xticks(df["Year"])
-        ax2.set_xticklabels(df["Year"], rotation=45)
-        ax2.set_xlabel("Year")
-        ax2.set_ylabel("Price (€)")
-        ax2.set_title("Drug Price Trends Over Time")
-        ax2.legend()
-        ax2.grid(True)
-
-        st.pyplot(fig2)
+        fig2.update_layout(# title="Drug Price Trends Over Time",
+                           xaxis_title="Year", yaxis_title="Price (€)",
+                           template="plotly_white", showlegend=True)
+        st.plotly_chart(fig2, use_container_width=True)
 
     # Center column with map
     with col2:
