@@ -3,3 +3,13 @@ pandas
 numpy
 requests
 matplotlib
+
+
+geopandas
+folium
+streamlit-folium
+plotly==6.0.0
+
+seaborn==0.13.2
+branca==0.8.1
+pillow==11.1.0
