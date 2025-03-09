@@ -343,3 +343,12 @@ elif page == "Impact":
     - **Strengthen Law Enforcement**: Increase efforts to curb the illegal drug trade and reduce drug-related crimes.
     - **Policy Reforms**: Develop and implement policies that address the root causes of drug usage and provide long-term solutions.
     """)
+
+    st.header("Data Sources")
+    st.write("""
+    [12d9 -- Drug-related deaths (B-classification) by underlying cause of death, by age and sex, 2006-2023](https://pxdata.stat.fi/PxWeb/pxweb/fi/StatFin/StatFin__ksyyt/statfin_ksyyt_pxt_12d9.px/)
+    \n
+    [13ex -- Reported crimes and their investigation by crime group, by crime type and year of reporting, 1980-2023 (translated from Finnish to English)](https://pxdata.stat.fi/PxWeb/pxweb/fi/StatFin/StatFin__rpk/statfin_rpk_pxt_13ex.px/)
+    \n
+    [Rehabilitation and other data are available at Sotkanet.fi](https://sotkanet.fi/sotkanet/en/haku?g=340#)
+    """)
