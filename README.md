@@ -1,6 +1,6 @@
 ﻿# Drug Usage Monitoring and Prediction Dashboard in Finland
 
-You can access the live dashboard [here](https://drug-usage-prediction-finland.streamlit.app/).
+You can access the live dashboard [here](https://dilnuwan11-drug-usage-prediction-streamlit-app-5okgvb.streamlit.app/).
 
 ## Overview
 This project aims to monitor and predict drug usage trends in Finland. The dashboard provides valuable insights into drug-related deaths, offenses, price trends, regional usage patterns, and rehabilitation needs. It is designed to help stakeholders make informed decisions to mitigate drug-related issues.
